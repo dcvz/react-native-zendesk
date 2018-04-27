@@ -45,8 +45,6 @@ class RNZendesk: RCTEventEmitter {
     @objc(identifyJWT:)
     func identifyJWT(token: String) {
         let identity = Identity.createJwt(token: token)
-        
-        Zendesk.initialize(appId: appId, clientId: clientId, zendeskUrl: zendeskUrl)
         Zendesk.instance?.setIdentity(identity)
     }
     
@@ -56,7 +54,7 @@ class RNZendesk: RCTEventEmitter {
             let hcConfig = HelpCenterUiConfiguration()
             hcConfig.hideContactSupport = (options["hideContactSupport"] as? Bool) ?? false
             let helpCenter = HelpCenterUi.buildHelpCenterOverview(withConfigs: [hcConfig])
-            UIApplication.shared.keyWindow.window?.rootViewController?.navigationController?.pushViewController(helpCenter, animated: true)
+            (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.pushViewController(helpCenter, animated: true)
         }
     }
 }

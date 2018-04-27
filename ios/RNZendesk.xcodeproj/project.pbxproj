@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BE9BB61209072B1002221AF /* ZendeskSDKStrings.bundle in Sources */ = {isa = PBXBuildFile; fileRef = 9BEDAFE8208E915E000BFECF /* ZendeskSDKStrings.bundle */; };
+		9BE9BB63209072F8002221AF /* ZendeskCoreSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE5208E915E000BFECF /* ZendeskCoreSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BE9BB64209072F8002221AF /* ZendeskProviderSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE6208E915E000BFECF /* ZendeskProviderSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BE9BB65209072F8002221AF /* ZendeskSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE7208E915E000BFECF /* ZendeskSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9BEDAFDE208E90CB000BFECF /* RNZendesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEDAFDD208E90CB000BFECF /* RNZendesk.swift */; };
 		9BEDAFE9208E915E000BFECF /* ZendeskCoreSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE5208E915E000BFECF /* ZendeskCoreSDK.framework */; };
 		9BEDAFEA208E915E000BFECF /* ZendeskProviderSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE6208E915E000BFECF /* ZendeskProviderSDK.framework */; };
@@ -15,13 +19,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9BEDAFD8208E90CB000BFECF /* CopyFiles */ = {
+		9BE9BB62209072ED002221AF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9BE9BB63209072F8002221AF /* ZendeskCoreSDK.framework in Embed Frameworks */,
+				9BE9BB64209072F8002221AF /* ZendeskProviderSDK.framework in Embed Frameworks */,
+				9BE9BB65209072F8002221AF /* ZendeskSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BEDAFD8208E90CB000BFECF /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -100,8 +118,9 @@
 			buildPhases = (
 				9BEDAFD6208E90CB000BFECF /* Sources */,
 				9BEDAFD7208E90CB000BFECF /* Frameworks */,
-				9BEDAFD8208E90CB000BFECF /* CopyFiles */,
-				9BEDAFEC208E917E000BFECF /* Strip Frameworks */,
+				9BEDAFD8208E90CB000BFECF /* Copy Files */,
+				9BE9BB62209072ED002221AF /* Embed Frameworks */,
+				9BE9BB66209073A3002221AF /* Strip Zendesk Frameworks */,
 			);
 			buildRules = (
 			);
@@ -146,19 +165,19 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9BEDAFEC208E917E000BFECF /* Strip Frameworks */ = {
+		9BE9BB66209073A3002221AF /* Strip Zendesk Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Strip Frameworks";
+			name = "Strip Zendesk Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bash \"${PROJECT_DIR}/Frameworks/ZendeskCoreSDK.framework/strip-frameworks.sh\"";
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZendeskCoreSDK.framework/strip-frameworks.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -167,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE9BB61209072B1002221AF /* ZendeskSDKStrings.bundle in Sources */,
 				9BEDAFDE208E90CB000BFECF /* RNZendesk.swift in Sources */,
 				9BEDAFF4208E954E000BFECF /* RNZendeskBridge.m in Sources */,
 			);
@@ -293,10 +313,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/**",
 				);
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../react-native/React/**";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,10 +339,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/**",
 				);
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../react-native/React/**";
 				LD_RUNPATH_SEARCH_PATHS = (
