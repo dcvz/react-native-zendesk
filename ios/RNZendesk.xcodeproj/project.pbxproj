@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9BE9BB61209072B1002221AF /* ZendeskSDKStrings.bundle in Sources */ = {isa = PBXBuildFile; fileRef = 9BEDAFE8208E915E000BFECF /* ZendeskSDKStrings.bundle */; };
-		9BE9BB63209072F8002221AF /* ZendeskCoreSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE5208E915E000BFECF /* ZendeskCoreSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9BE9BB64209072F8002221AF /* ZendeskProviderSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE6208E915E000BFECF /* ZendeskProviderSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9BE9BB65209072F8002221AF /* ZendeskSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE7208E915E000BFECF /* ZendeskSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BE9BB63209072F8002221AF /* ZendeskCoreSDK.framework in Embedded Binaries */ = {isa = PBXBuildFile; fileRef = 9BEDAFE5208E915E000BFECF /* ZendeskCoreSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BE9BB64209072F8002221AF /* ZendeskProviderSDK.framework in Embedded Binaries */ = {isa = PBXBuildFile; fileRef = 9BEDAFE6208E915E000BFECF /* ZendeskProviderSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BE9BB65209072F8002221AF /* ZendeskSDK.framework in Embedded Binaries */ = {isa = PBXBuildFile; fileRef = 9BEDAFE7208E915E000BFECF /* ZendeskSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BE9BDF920930DD3002221AF /* ZendeskSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9BEDAFE8208E915E000BFECF /* ZendeskSDKStrings.bundle */; };
 		9BEDAFDE208E90CB000BFECF /* RNZendesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEDAFDD208E90CB000BFECF /* RNZendesk.swift */; };
 		9BEDAFE9208E915E000BFECF /* ZendeskCoreSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE5208E915E000BFECF /* ZendeskCoreSDK.framework */; };
 		9BEDAFEA208E915E000BFECF /* ZendeskProviderSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEDAFE6208E915E000BFECF /* ZendeskProviderSDK.framework */; };
@@ -19,17 +20,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9BE9BB62209072ED002221AF /* Embed Frameworks */ = {
+		9BE9BB62209072ED002221AF /* Embedded Binaries */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9BE9BB63209072F8002221AF /* ZendeskCoreSDK.framework in Embed Frameworks */,
-				9BE9BB64209072F8002221AF /* ZendeskProviderSDK.framework in Embed Frameworks */,
-				9BE9BB65209072F8002221AF /* ZendeskSDK.framework in Embed Frameworks */,
+				9BE9BB63209072F8002221AF /* ZendeskCoreSDK.framework in Embedded Binaries */,
+				9BE9BB64209072F8002221AF /* ZendeskProviderSDK.framework in Embedded Binaries */,
+				9BE9BB65209072F8002221AF /* ZendeskSDK.framework in Embedded Binaries */,
 			);
-			name = "Embed Frameworks";
+			name = "Embedded Binaries";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		9BEDAFD8208E90CB000BFECF /* Copy Files */ = {
@@ -118,8 +119,9 @@
 			buildPhases = (
 				9BEDAFD6208E90CB000BFECF /* Sources */,
 				9BEDAFD7208E90CB000BFECF /* Frameworks */,
+				9BE9BDF820930DC5002221AF /* Resources */,
 				9BEDAFD8208E90CB000BFECF /* Copy Files */,
-				9BE9BB62209072ED002221AF /* Embed Frameworks */,
+				9BE9BB62209072ED002221AF /* Embedded Binaries */,
 				9BE9BB66209073A3002221AF /* Strip Zendesk Frameworks */,
 			);
 			buildRules = (
@@ -163,6 +165,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9BE9BDF820930DC5002221AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BE9BDF920930DD3002221AF /* ZendeskSDKStrings.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		9BE9BB66209073A3002221AF /* Strip Zendesk Frameworks */ = {
