@@ -55,7 +55,9 @@ class RNZendesk: RCTEventEmitter {
             let hcConfig = HelpCenterUiConfiguration()
             hcConfig.hideContactSupport = (options["hideContactSupport"] as? Bool) ?? false
             let helpCenter = HelpCenterUi.buildHelpCenterOverview(withConfigs: [hcConfig])
-            (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.pushViewController(helpCenter, animated: true)
+            
+            let nvc = UINavigationController(rootViewController: helpCenter)
+            UIApplication.shared.keyWindow?.rootViewController?.present(nvc, animated: true, completion: nil)
         }
     }
 }
