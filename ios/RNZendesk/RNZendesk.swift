@@ -43,7 +43,7 @@ class RNZendesk: RCTEventEmitter {
     }
     
     @objc(identifyJWT:)
-    func identifyJWT(token: String) {
+    func identifyJWT(token: String?) {
         guard let token = token else { return }
         let identity = Identity.createJwt(token: token)
         Zendesk.instance?.setIdentity(identity)
