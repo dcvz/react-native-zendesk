@@ -60,4 +60,18 @@ class RNZendesk: RCTEventEmitter {
             UIApplication.shared.keyWindow?.rootViewController?.present(nvc, animated: true, completion: nil)
         }
     }
+    
+    @objc(showNewTicket:)
+    func showNewTicket(with options: [String: Any]) {
+        DispatchQueue.main.async {
+            let config = RequestUiConfiguration()
+            if let tags = options["tags"] as? [String] {
+                config.tags = tags
+            }
+            let requestScreen = RequestUi.buildRequestUi(with: [config])
+            
+            let nvc = UINavigationController(rootViewController: requestScreen)
+            UIApplication.shared.keyWindow?.rootViewController?.present(nvc, animated: true, completion: nil)
+        }
+    }
 }
