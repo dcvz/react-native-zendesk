@@ -17,4 +17,6 @@ RCT_EXTERN_METHOD(identifyJWT:(NSString *)token);
 
 RCT_EXTERN_METHOD(showHelpCenter:(NSDictionary *)options);
 
+RCT_EXTERN_METHOD(showNewTicket:(NSDictionary *)options);
+
 @end
