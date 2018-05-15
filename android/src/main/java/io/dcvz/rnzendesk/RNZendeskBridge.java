@@ -48,4 +48,13 @@ public class RNZendeskBridge extends ReactContextBaseJavaModule {
         HelpCenterActivity.builder()
                 .show(getReactApplicationContext(), hcConfig);
     }
+    
+    @ReactMethod
+    public void showNewTicket(ReadableMap options) {
+        ArrayList tags = options.getArray("tags").toArrayList();
+
+        RequestActivity.builder()
+                .withTags(tags)
+                .show(getReactApplicationContext());
+    }
 }
