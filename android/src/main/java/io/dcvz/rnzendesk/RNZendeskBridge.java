@@ -6,11 +6,14 @@ import zendesk.core.JwtIdentity;
 import zendesk.support.Support;
 import zendesk.support.UiConfig;
 import zendesk.support.guide.HelpCenterActivity;
+import zendesk.support.request.RequestActivity;
 
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
+
+import java.util.ArrayList;
 
 public class RNZendeskBridge extends ReactContextBaseJavaModule {
 
