@@ -26,6 +26,12 @@ Zendesk.initialize(config);
 ```
 
 ### Setting an identity (Required)
+
+#### Setting an anonymous identity
+```js
+Zendesk.identifyAnon();
+```
+
 #### Setting a unique identity
 ```js
 Zendesk.identifyJWT(USER_TOKEN);
