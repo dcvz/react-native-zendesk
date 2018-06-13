@@ -13,7 +13,9 @@
 
 RCT_EXTERN_METHOD(initialize:(NSDictionary *)config);
 
-RCT_EXTERN_METHOD(identifyAnon:(NSString *)token);
+RCT_EXTERN_METHOD(identifyAnon);
+
+RCT_EXTERN_METHOD(identifyAnon:(NSString *)name :(NSString *)email);
 
 RCT_EXTERN_METHOD(identifyJWT:(NSString *)token);
 
