@@ -8,35 +8,10 @@ yarn add react-native-zendesk
 npm install --save react-native-zendesk
 ```
 
-2. Link the modules to your native projects
+2. Link the modules to your native projects (VERION < RN 0.60)
 ```
 react-native link react-native-zendesk
 ```
 
 ## Getting Started
-### Initializing the Support SDK (Required)
-```js
-const config = {
-  zendeskUrl: ZENDESK_URL,
-  appId: ZENDESK_APP_ID,
-  clientId: ZENDESK_CLIENT_ID,
-};
-
-Zendesk.initialize(config);
-```
-
-### Setting an identity (Required)
-#### Setting a unique identity
-```js
-Zendesk.identifyJWT(USER_TOKEN);
-```
-
-### Adding Help Center
-```ts
-// possible options to pass to the help center
-interface Options {
-  hideContactSupport?: boolean
-}
-
-Zendesk.showHelpCenter(OPTIONS);
-```
+API is very small and can be seen [here](https://github.com/dcvz/react-native-zendesk/blob/master/src/index.ts)
