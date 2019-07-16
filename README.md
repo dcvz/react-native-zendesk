@@ -8,7 +8,7 @@ yarn add react-native-zendesk
 npm install --save react-native-zendesk
 ```
 
-2. Link the modules to your native projects (VERION < RN 0.60)
+2. Link the modules to your native projects (VERSION < RN 0.60)
 ```
 react-native link react-native-zendesk
 ```
