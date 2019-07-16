@@ -29,7 +29,7 @@ class RNZendesk: RCTEventEmitter {
     }
     
     
-    // MARK: - Public API
+    // MARK: - Initialization
 
     @objc(initialize:)
     func initialize(config: [String: Any]) {
@@ -42,12 +42,22 @@ class RNZendesk: RCTEventEmitter {
         Support.initialize(withZendesk: Zendesk.instance)
     }
     
+    // MARK: - Indentification
+    
     @objc(identifyJWT:)
     func identifyJWT(token: String?) {
         guard let token = token else { return }
         let identity = Identity.createJwt(token: token)
         Zendesk.instance?.setIdentity(identity)
     }
+    
+    @objc(identifyAnonymous:email:)
+    func identifyAnonymous(name: String?, email: String?) {
+        var identity = Identity.createAnonymous(name: name, email: email)
+        Zendesk.instance?.setIdentity(identity)
+    }
+    
+    // MARK: - UI Methods
     
     @objc(showHelpCenter:)
     func showHelpCenter(with options: [String: Any]) {

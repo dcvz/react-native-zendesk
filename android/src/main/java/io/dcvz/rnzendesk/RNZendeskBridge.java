@@ -26,6 +26,8 @@ public class RNZendeskBridge extends ReactContextBaseJavaModule {
         return "RNZendesk";
     }
 
+    // MARK: - Initialization
+
     @ReactMethod
     public void initialize(ReadableMap config) {
         String appId = config.getString("appId");
@@ -36,11 +38,25 @@ public class RNZendeskBridge extends ReactContextBaseJavaModule {
         Support.INSTANCE.init(Zendesk.INSTANCE);
     }
 
+    // MARK: - Indentification
+
     @ReactMethod
     public void identifyJWT(String token) {
         JwtIdentity identity = new JwtIdentity(token);
         Zendesk.INSTANCE.setIdentity(identity);
     }
+
+    @ReactMethod
+    public void identifyAnonymous(String name, String email) {
+        Identity identity = new AnonymousIdentity.Builder()
+        .withNameIdentifier(name)
+        .withEmailIdentifier(email)
+        .build();
+
+        Zendesk.INSTANCE.setIdentity(identity);
+    }
+
+    // MARK: - UI Methods
 
     @ReactMethod
     public void showHelpCenter(ReadableMap options) {
