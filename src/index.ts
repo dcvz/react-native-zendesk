@@ -41,3 +41,7 @@ interface NewTicketOptions {
 export function showNewTicket(options: NewTicketOptions) {
   RNZendesk.showNewTicket(options)
 }
+
+export function showTicketList() {
+  RNZendesk.showTicketList()
+}
