@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import ZendeskSDK
 import ZendeskCoreSDK
+import CommonUISDK
 
 @objc(RNZendesk)
 class RNZendesk: RCTEventEmitter {
