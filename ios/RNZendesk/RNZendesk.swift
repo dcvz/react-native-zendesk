@@ -14,7 +14,7 @@ import ZendeskCoreSDK
 @objc(RNZendesk)
 class RNZendesk: RCTEventEmitter {
 
-    override open static func requiresMainQueueSetup() -> Bool {
+    override public static func requiresMainQueueSetup() -> Bool {
         return false;
     }
     
@@ -53,7 +53,7 @@ class RNZendesk: RCTEventEmitter {
     
     @objc(identifyAnonymous:email:)
     func identifyAnonymous(name: String?, email: String?) {
-        var identity = Identity.createAnonymous(name: name, email: email)
+        let identity = Identity.createAnonymous(name: name, email: email)
         Zendesk.instance?.setIdentity(identity)
     }
     
@@ -64,7 +64,7 @@ class RNZendesk: RCTEventEmitter {
         DispatchQueue.main.async {
             let hcConfig = HelpCenterUiConfiguration()
             hcConfig.hideContactSupport = (options["hideContactSupport"] as? Bool) ?? false
-            let helpCenter = HelpCenterUi.buildHelpCenterOverview(withConfigs: [hcConfig])
+            let helpCenter = HelpCenterUi.buildHelpCenterOverviewUi(withConfigs: [hcConfig])
             
             let nvc = UINavigationController(rootViewController: helpCenter)
             UIApplication.shared.keyWindow?.rootViewController?.present(nvc, animated: true, completion: nil)
