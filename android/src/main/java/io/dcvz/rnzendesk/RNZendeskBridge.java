@@ -3,6 +3,7 @@ package io.dcvz.rnzendesk;
 import zendesk.core.Zendesk;
 import zendesk.core.Identity;
 import zendesk.core.JwtIdentity;
+import zendesk.core.AnonymousIdentity;
 import zendesk.support.Support;
 import zendesk.support.UiConfig;
 import zendesk.support.guide.HelpCenterActivity;
