@@ -5,9 +5,9 @@ import zendesk.core.Identity;
 import zendesk.core.JwtIdentity;
 import zendesk.core.AnonymousIdentity;
 import zendesk.support.Support;
-import zendesk.support.UiConfig;
 import zendesk.support.guide.HelpCenterActivity;
 import zendesk.support.request.RequestActivity;
+import zendesk.support.requestlist.RequestListActivity;
 
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
@@ -50,9 +50,9 @@ public class RNZendeskBridge extends ReactContextBaseJavaModule {
     @ReactMethod
     public void identifyAnonymous(String name, String email) {
         Identity identity = new AnonymousIdentity.Builder()
-        .withNameIdentifier(name)
-        .withEmailIdentifier(email)
-        .build();
+            .withNameIdentifier(name)
+            .withEmailIdentifier(email)
+            .build();
 
         Zendesk.INSTANCE.setIdentity(identity);
     }
@@ -61,12 +61,10 @@ public class RNZendeskBridge extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void showHelpCenter(ReadableMap options) {
-        UiConfig hcConfig = HelpCenterActivity.builder()
-                .withContactUsButtonVisible(!(options.hasKey("hideContactSupport") && options.getBoolean("hideContactSupport")))
-                .config();
-
+        Boolean hideContact = !options.getBoolean("hideContactUs");
         HelpCenterActivity.builder()
-                .show(getReactApplicationContext(), hcConfig);
+            .withContactUsButtonVisible(!hideContact)
+            .show(getReactApplicationContext());
     }
     
     @ReactMethod
@@ -74,7 +72,13 @@ public class RNZendeskBridge extends ReactContextBaseJavaModule {
         ArrayList tags = options.getArray("tags").toArrayList();
 
         RequestActivity.builder()
-                .withTags(tags)
-                .show(getReactApplicationContext());
+            .withTags(tags)
+            .show(getReactApplicationContext());
+    }
+
+    @ReactMethod
+    public void showTicketList() {
+        RequestListActivity.builder()
+            .show(getReactApplicationContext());
     }
 }
