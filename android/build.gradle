@@ -24,6 +24,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
+    implementation "com.facebook.react:react-native:${safeExtGet("reactNative", "+")}" // from node_modules
     implementation group: 'com.zendesk', name: 'support', version: '3.0.1'
 }
