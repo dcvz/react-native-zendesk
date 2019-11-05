@@ -24,5 +24,6 @@ RCT_EXTERN_METHOD(identifyAnonymous:(NSString *)name email:(NSString *)email);
 
 RCT_EXTERN_METHOD(showHelpCenter:(NSDictionary *)options);
 RCT_EXTERN_METHOD(showNewTicket:(NSDictionary *)options);
+RCT_EXTERN_METHOD(showTicketList);
 
 @end

@@ -85,4 +85,14 @@ class RNZendesk: RCTEventEmitter {
             UIApplication.shared.keyWindow?.rootViewController?.present(nvc, animated: true, completion: nil)
         }
     }
+
+    @objc(showTicketList)
+    func showTicketList() {
+        DispatchQueue.main.async {
+            let requestListController = RequestUi.buildRequestList()
+            
+            let nvc = UINavigationController(rootViewController: requestListController)
+            UIApplication.shared.keyWindow?.rootViewController?.present(nvc, animated: true)
+        }
+    }
 }
