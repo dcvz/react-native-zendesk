@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-import ZendeskSDK
+import SupportSDK
 import ZendeskCoreSDK
 import CommonUISDK
 
@@ -64,7 +64,13 @@ class RNZendesk: RCTEventEmitter {
     func showHelpCenter(with options: [String: Any]) {
         DispatchQueue.main.async {
             let hcConfig = HelpCenterUiConfiguration()
-            hcConfig.hideContactSupport = (options["hideContactSupport"] as? Bool) ?? false
+
+            if let hideContactSupport = options["hideContactSupport"] as? Bool {
+                hcConfig.showContactOptions = !hideContactSupport
+            } else {
+                hcConfig.showContactOptions = true
+            }
+
             let helpCenter = HelpCenterUi.buildHelpCenterOverviewUi(withConfigs: [hcConfig])
             
             let nvc = UINavigationController(rootViewController: helpCenter)
