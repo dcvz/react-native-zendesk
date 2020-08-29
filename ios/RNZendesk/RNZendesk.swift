@@ -84,7 +84,17 @@ class RNZendesk: RCTEventEmitter {
             let config = RequestUiConfiguration()
             if let tags = options["tags"] as? [String] {
                 config.tags = tags
+            }          
+            var customList: [CustomField] = [];
+            if let customFields = options["custom_fields"] as? [Any] {
+                for item in customFields {
+                    let result = item as! NSDictionary
+                    
+                    let customField = CustomField(fieldId: Int64(truncating: result["fieldId"] as! NSNumber), value: result["value"])
+                    customList.append(customField)
+                }
             }
+            config.customFields = customList
             let requestScreen = RequestUi.buildRequestUi(with: [config])
             
             let nvc = UINavigationController(rootViewController: requestScreen)

@@ -10,12 +10,14 @@ import zendesk.core.Zendesk;
 import zendesk.core.Identity;
 import zendesk.core.JwtIdentity;
 import zendesk.core.AnonymousIdentity;
+import zendesk.support.CustomField;
 import zendesk.support.Support;
 import zendesk.support.guide.HelpCenterActivity;
 import zendesk.support.request.RequestActivity;
 import zendesk.support.requestlist.RequestListActivity;
 
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -80,13 +82,24 @@ public class RNZendeskBridge extends ReactContextBaseJavaModule {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getReactApplicationContext().startActivity(intent);
     }
-    
+
     @ReactMethod
     public void showNewTicket(ReadableMap options) {
         ArrayList tags = options.getArray("tags").toArrayList();
+        ArrayList customList = new ArrayList();
+
+        if(options.hasKey("custom_fields")){
+            ReadableArray customFields = options.getArray("custom_fields");
+            for (int i = 0; i < customFields.size(); i++) {
+                ReadableMap field = customFields.getMap(i);
+                CustomField customField = new CustomField((long) (field.getDouble("fieldId")), field.getString("value"));
+                customList.add(customField);
+            }
+        }
 
         Intent intent = RequestActivity.builder()
                 .withTags(tags)
+                .withCustomFields(customList)
                 .intent(getReactApplicationContext());
 
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
