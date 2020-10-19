@@ -72,7 +72,7 @@ class RNZendesk: RCTEventEmitter {
                 hcConfig.showContactOptions = true
             }
 
-            if let subject = options["subject"] as? [String] {
+            if let subject = options["subject"] as? String {
                 requestConfig.subject = subject
             }
 
